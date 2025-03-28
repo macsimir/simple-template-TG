@@ -5,7 +5,7 @@ from utils.config import dp,bot
 logging.basicConfig(level=logging.INFO) #Пишим логи для бота
 
 async def start_bot():
-    from handlers.BASE_HANDLERS import start,help
+    from handlers.BASE_HANDLERS import start,help,admin_panel
     logging.info("Запуск бота...")
     await dp.start_polling(bot)
 
