@@ -51,7 +51,6 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime, timedelta
 import random
 def fill_database_with_users(count=100, same_day_count=4):    
-    # Очищаем таблицу, если нужно (можно убрать, если не требуется)
     
     # Список возможных привилегий
     privileges = ['user']
@@ -84,4 +83,4 @@ if __name__ == "__main__":
     id_admin = os.getenv("ID_ADMIN")
     create_new_user(session=session, telegram_id=int(id_admin), privilege="admin")
 
-    fill_database_with_users()
+    # fill_database_with_users()

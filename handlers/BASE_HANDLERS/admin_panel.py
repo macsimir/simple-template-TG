@@ -1,6 +1,6 @@
 from aiogram.types import FSInputFile  # or BufferedInputFile
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram import types, F
+from aiogram import types, F,exceptions
 from aiogram.filters import Command
 
 from db.CREATE_DB import Session,User,user_output
@@ -8,6 +8,9 @@ from utils.utils import users_grafs_to_admin
 from utils.config import bot, dp, CHANNEL_ID
 
 from keyboards.admin_panel import admin_panel_keyboard
+
+import time 
+import asyncio
 
 @dp.message(Command("admin_panel"))
 async def help_command(message: types.Message):
@@ -29,5 +32,22 @@ async def show_users_callback(callback: types.CallbackQuery):
 
 @dp.callback_query(F.data == "newsletter")
 async def newsletter_callback(callback: types.CallbackQuery):
+    session = Session()
+    users = session.query(User).all()
     
-    await callback.message.answer("Рассылка!")
+    failed = 0
+    successful = 0
+
+    for user in users:
+        try:
+            successful += 1
+            await bot.send_message(chat_id=user.telegram_id, text="Тестова рассылка")
+        except exceptions.TelegramBadRequest as e:
+            failed += 1
+
+    report = [
+    f"📊 Результат рассылки:",
+    f"✅ Успешно: {successful}",
+    f"❌ Не удалось: {failed}"
+    ]
+    await callback.message.answer("\n".join(report))
