@@ -18,31 +18,22 @@
    ```bash
    python -m venv .venv
 
-    Активация на Windows:
-    bash
-
+Активация на Windows:
+bash
+```
 .venv\Scripts\activate
-
+```
 Активация на macOS/Linux:
 bash
 
     source .venv/bin/activate
 
-    Установка зависимостей:
-    bash
-
-pip install aiogram python-dotenv sqlalchemy
-
-Или из файла requirements.txt (если создан)
-
 Настройка окружения:
 Создайте файл .env в корне проекта:
-ini
-
+```
 BOT_TOKEN="1234567890:AAFxTmPqXyZiUQqQqQqQqQqQqQqQqQqQqQq"
 ID_ADMIN="9876543210"
-DATABASE_URL="sqlite:///database.db"
-
+```
 Где:
 
     BOT_TOKEN - замените на токен от @BotFather
@@ -52,7 +43,6 @@ DATABASE_URL="sqlite:///database.db"
     DATABASE_URL - URL для подключения к БД (SQLite по умолчанию)
 
 Запуск бота:
-bash
 
     python main.py
 
@@ -60,20 +50,11 @@ bash
 
 Доступ по команде /admin_panel для пользователя с ID, указанным в ID_ADMIN:
 
-    Рассылка:
+Рассылка:
 
-        Отправка сообщений всем пользователям бота
+- Отправка сообщений всем пользователям бота
 
-    Статистика:
+Статистика:
 
-        Просмотр количества пользователей и другой статистики
+- Просмотр количества пользователей и другой статистики
 
-Требования
-
-    Python 3.8+
-
-    aiogram 3.x
-
-    SQLAlchemy 2.x
-
-    python-dotenv
