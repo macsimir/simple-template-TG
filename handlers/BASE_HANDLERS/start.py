@@ -3,7 +3,7 @@ from aiogram import types, F
 from aiogram.filters import Command
 from db.CREATE_DB import create_new_user,Session,User
 from utils.config import bot, dp, CHANNEL_ID
-
+import time
 
 @dp.message(Command("start"))
 async def help_command(message: types.Message):
